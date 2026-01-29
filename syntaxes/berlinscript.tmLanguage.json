@@ -1,0 +1,126 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "BerlinScript",
+	"patterns": [
+		{ "include": "#keywords_crewmate" },
+		{ "include": "#strings" },
+		{ "include": "#numbers" },
+		{ "include": "#tasks" },
+		{ "include": "#comments" },
+		{ "include": "#escapes" },
+		{ "include": "#sussy_modes" }
+	],
+	"repository": {
+		"operators": {
+			"patterns": [{
+				"name": "keyword.operator.logical.bs",
+				"match": "(==|!=|<=|>=|<|>|!|=>)"
+			}]
+		},
+		"logic_gates": {
+			"patterns": [
+				{
+					"name": "keyword.operator.logic_gate.bs",
+					"match": "(!&&|!\\|\\||!\\^|&\\^|&&|\\|\\||!|\\^)"
+				},
+				{
+					"name": "keyword.operator.logic_gate.bs",
+					"match": "\\b(AND|NAND|OR|NOR|XOR|XNOR|XAND|NOT)\\b"
+				}
+			]
+		},
+		"bash_commands": {
+			"patterns": [{
+				"name": "meta.bash.command.bs",
+				"match": "\\b(bash)\\b\\s+(.*)$",
+				"captures": {
+					"1": { "name": "keyword.other.normal.bs" },
+					"2": { "name": "string.unquoted.bash.bs", "patterns": [{ "include": "source.shell" }] }
+				}
+			}]
+		},
+		"tasks": {
+			"patterns": [{
+				"name": "entity.name.function.bs",
+				"match": "\\btask\\s+([a-zA-Z_][a-zA-Z0-9_]*)\\b"
+			}]
+		},
+		"comments": {
+			"patterns": [{
+				"name": "comment.line.number-sign.bs",
+				"match": "#.*$"
+			}]
+		},
+		"sussy_modes": {
+			"patterns": [
+				{
+					"name": "meta.sussy.single.bs",
+					"match": "\\b(sus)\\s+([a-zA-Z_]+)",
+					"captures": {
+						"1": { "name": "keyword.control.sus.bs" },
+						"2": { "name": "keyword.control.amogus.bs" }
+					}
+				},
+				{
+					"name": "meta.sussy.block.bs",
+					"begin": "\\bsusstart\\b",
+					"beginCaptures": {
+						"0": { "name": "keyword.control.susstart.bs" }
+					},
+					"end": "\\bsusend\\b",
+					"endCaptures": {
+						"0": { "name": "keyword.control.susend.bs" }
+					},
+					"patterns": [
+						{ "include": "#keywords_imposter" },
+						{ "include": "$self" }
+					]
+				}
+			]
+		},
+		"keywords_crewmate": {
+			"patterns": [{
+					"name": "keyword.other.normal.bs",
+					"match": "\\b(bash|if|wenn|daca|then|dann|atunci|else|sonst|altfel|elseif|sonstwenn|altfeldaca|while|solange|cattimp|for|fuer|pentru|return|rueckgabe|returneaza|edit|bearbeite|editeaza|create|erstelle|creeaza|remove|loesche|sterge)\\b"
+			}]
+		},
+		"keywords_imposter": {
+			"patterns": [{
+					"name": "keyword.control.amogus.bs",
+					"match": "\\b(amogus|vent|sabotage|scan|mofify|eject)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.bs",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.bs",
+					"match": "\\\\."
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [{
+				"name": "constant.numeric.bs",
+				"match": "\\b[0-9]+\\b"
+			}]
+		},
+		"control":{
+			"patterns":[{
+				"name": "keyword.control.bs",
+				"match": "\\b(suspect"
+			}]
+		},
+		"escapes": {
+			"patterns": [
+				{
+					"name": "constant.character.escape.bs",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.bs"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "berlinscript",
+  "displayName": "BerlinScript",
+  "description": "A Sussy Multilinual programming language made by a Berlin 6th-Grader for better Computer science class in Berlin",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.108.1"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "berlinscript",
+      "aliases": ["BerlinScript", "berlinscript"],
+      "extensions": [".bs"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "berlinscript",
+      "scopeName": "source.bs",
+      "path": "./syntaxes/berlinscript.tmLanguage.json"
+    }]
+  }
+}

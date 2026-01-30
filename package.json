@@ -1,6 +1,11 @@
 {
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CatChris2014/berlin-script"
+  },
   "name": "berlinscript",
   "displayName": "BerlinScript",
+  "publisher": "beagle-boys-dev",
   "description": "A Sussy Multilinual programming language made by a Berlin 6th-Grader for better Computer science class in Berlin",
   "version": "0.0.1",
   "engines": {
